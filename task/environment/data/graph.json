@@ -1,0 +1,62 @@
+{
+  "start": "pkgA-1.0",
+  "target": "pkgF-1.0",
+  "nodes": [
+    {"id":"pkgA-1.0","package":"A","version":"1.0","repo":"stable","trust":5},
+    {"id":"pkgB-2.0","package":"B","version":"2.0","repo":"stable","trust":5},
+    {"id":"pkgC-1.5","package":"C","version":"1.5","repo":"community","trust":2},
+    {"id":"pkgD-3.0","package":"D","version":"3.0","repo":"stable","trust":4},
+    {"id":"pkgE-1.0","package":"E","version":"1.0","repo":"stable","trust":5},
+    {"id":"pkgF-1.0","package":"F","version":"1.0","repo":"stable","trust":5}
+  ],
+  "edges": [
+    {
+      "from":"pkgA-1.0",
+      "to":"pkgB-2.0",
+      "cost":2,
+      "requires_repo":"stable",
+      "min_trust":4,
+      "optional":false
+    },
+    {
+      "from":"pkgB-2.0",
+      "to":"pkgD-3.0",
+      "cost":3,
+      "requires_repo":"stable",
+      "min_trust":4,
+      "optional":false
+    },
+    {
+      "from":"pkgA-1.0",
+      "to":"pkgC-1.5",
+      "cost":1,
+      "requires_repo":"community",
+      "min_trust":2,
+      "optional":false
+    },
+    {
+      "from":"pkgC-1.5",
+      "to":"pkgF-1.0",
+      "cost":1,
+      "requires_repo":"stable",
+      "min_trust":4,
+      "optional":false
+    },
+    {
+      "from":"pkgD-3.0",
+      "to":"pkgE-1.0",
+      "cost":1,
+      "requires_repo":"stable",
+      "min_trust":4,
+      "optional":false
+    },
+    {
+      "from":"pkgE-1.0",
+      "to":"pkgF-1.0",
+      "cost":2,
+      "requires_repo":"stable",
+      "min_trust":4,
+      "optional":false
+    }
+  ]
+}

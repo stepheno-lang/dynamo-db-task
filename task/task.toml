@@ -1,8 +1,12 @@
-artifacts = []  # paths the verifier reads from the agent (e.g. ["/app/output.json"]) — must be above the first [section]
+artifacts = [
+    "/app/output/path.json",
+    "/app/output/summary.json",
+    "/app/output/validation.json"
+]
 
 [task]
-name = "dynamo/your-task-name"  # required format: org/name (Harbor needs the slash); name part lowercase kebab-case, <=3 words
-description = ""                 # one-line summary of the task
+name = "dynamo/dependency-analyzer"
+description = "Repair a property-graph dependency analyzer that ignores semantic dependency constraints."
 
 [metadata]
 # --- Pre-seeded for you when this repo was created — DO NOT EDIT ---
@@ -13,12 +17,15 @@ model_tested = "Opus-4.8"           # difficulty-benchmarking model (do not chan
 agent_tested = "Terminus-2"        # difficulty-benchmarking agent (do not change)
 # --- You fill these in ---
 # task_objective / artifact_type: pick from .dynamo/diversity-taxonomy.toml (lowercase snake_case).
-task_objective = []                # e.g. ["implement", "debug"]
-artifact_type = []                 # e.g. ["codebase", "configuration_file"]
-expert_time_estimate_hours = 0     # best-case hours for a focused domain expert with the intended insight
-difficulty_explanation = ""        # why this task is hard for agents and humans
-solution_explanation = ""          # high-level approach and key insights
-verification_explanation = ""      # how the tests verify correctness
+task_objective = ["debug"]
+artifact_type = ["codebase"]
+expert_time_estimate_hours = 6
+
+difficulty_explanation = "The task requires repairing graph traversal logic that must satisfy semantic dependency constraints rather than simply computing the shortest path. Correct solutions require reasoning about repository restrictions, trust levels, optional dependencies, and constrained graph traversal."
+
+solution_explanation = "Repair the shortest-path implementation so edges are validated against repository, trust, and optional dependency rules before they are explored. The repaired traversal must return the globally minimum valid dependency chain."
+
+verification_explanation = "The verifier independently computes the expected constrained dependency path and compares every output JSON file for correctness, including path selection, total cost, and constraint validation."
 
 [verifier]
 timeout_sec = 120.0                # increase based on your test suite's runtime demands

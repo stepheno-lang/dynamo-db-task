@@ -1,0 +1,8 @@
+{
+  "minimum_trust": 4,
+  "allow_optional": false,
+  "allowed_repositories": [
+    "stable"
+  ],
+  "tie_break": "lexicographical_path"
+}
