@@ -1,0 +1,22 @@
+[
+  {
+    "package": "A",
+    "version": "1.0"
+  },
+  {
+    "package": "B",
+    "version": "2.0"
+  },
+  {
+    "package": "D",
+    "version": "3.0"
+  },
+  {
+    "package": "E",
+    "version": "1.0"
+  },
+  {
+    "package": "F",
+    "version": "1.0"
+  }
+]

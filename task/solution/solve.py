@@ -7,8 +7,13 @@ if Path("/app").exists():
 else:
     BASE = Path(__file__).resolve().parents[1]
 
-GRAPH_FILE = BASE / "environment/data/graph.json"
-RULES_FILE = BASE / "environment/data/rules.json"
+if (BASE / "data").exists():
+    DATA_DIR = BASE / "data"
+else:
+    DATA_DIR = BASE / "environment/data"
+
+GRAPH_FILE = DATA_DIR / "graph.json"
+RULES_FILE = DATA_DIR / "rules.json"
 OUTPUT_DIR = BASE / "output"
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
